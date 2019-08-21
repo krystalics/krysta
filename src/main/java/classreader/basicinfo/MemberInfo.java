@@ -25,11 +25,13 @@ public class MemberInfo extends BasicInfo{
     public MemberInfo(ConstantPool cp){
         super(cp);
     }
+
     public void read(InputStream in) {
         accessFlags= U2.read(in);
         nameIndex= U2.read(in);
         descriptorIndex= U2.read(in);
         attributesCount= U2.read(in);
+        attributes = new AttributeInfo[attributesCount];
         for (int i = 0; i < attributesCount; i++) {
             AttributeInfo attributeInfo=AttributeInfo.getAttribute(mCp,in);
             attributeInfo.read(in);

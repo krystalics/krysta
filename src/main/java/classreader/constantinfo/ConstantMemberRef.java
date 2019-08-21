@@ -1,6 +1,7 @@
 package classreader.constantinfo;
 
 import classreader.ConstantInfo;
+import classreader.basictype.U2;
 
 import java.io.InputStream;
 
@@ -12,6 +13,7 @@ public class ConstantMemberRef extends ConstantInfo {
     public int nameAndTypeIndex;
 
     public void read(InputStream in) {
-
+        classIndex= U2.read(in);
+        nameAndTypeIndex=U2.read(in);
     }
 }

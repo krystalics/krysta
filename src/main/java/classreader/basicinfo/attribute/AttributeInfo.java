@@ -25,7 +25,7 @@ public class AttributeInfo extends BasicInfo {
     }
 
     public void read(InputStream in) {
-        length = (int) U4.read(in);
+        length = U4.read(in);
         info = new short[(int) length];
         for (int i = 0; i < length; i++) {
             info[i] = U1.read(in);

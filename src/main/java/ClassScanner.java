@@ -1,3 +1,8 @@
+import annotation.Component;
+import classreader.ClassAnnotation;
+import classreader.ClassReader;
+import jdk.internal.org.objectweb.asm.Type;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
@@ -5,6 +10,8 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -12,8 +19,8 @@ import java.util.jar.JarFile;
 public class ClassScanner {
 
     /*
-    * 使用url 同时扫描file和jar，
-    * */
+     * 使用url 同时扫描file和jar，
+     * */
     public static Set<Class<?>> getClazzFromPkg(String pkg) {
         Set<Class<?>> classes = new LinkedHashSet<>(); //按照添加顺序排序
 
@@ -21,15 +28,15 @@ public class ClassScanner {
         try {
             // 这里用ClassScanner 的类加载器扫描这个包，这个类加载器如果没有自己写的话，一般最终会是有JVM提供的 AppClassLoader，
             Enumeration<URL> urls = ClassScanner.class.getClassLoader().getResources(pkgDirName);
-            while(urls.hasMoreElements()){
-                URL url=urls.nextElement();
-                String protocol=url.getProtocol();
-                if("file".equals(protocol)){
-                    String filePath= URLDecoder.decode(url.getFile(),"UTF-8"); //获取包名的物理路径
-                    findClassesByFile(pkg,filePath,classes);
-                }else if("jar".equals(protocol)){
-                    JarFile jar=((JarURLConnection)url.openConnection()).getJarFile();
-                    findClassesByJar(pkg,jar,classes);
+            while (urls.hasMoreElements()) {
+                URL url = urls.nextElement();
+                String protocol = url.getProtocol();
+                if ("file".equals(protocol)) {
+                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8"); //获取包名的物理路径
+                    findClassesByFile(pkg, filePath, classes);
+                } else if ("jar".equals(protocol)) {
+                    JarFile jar = ((JarURLConnection) url.openConnection()).getJarFile();
+                    findClassesByJar(pkg, jar, classes);
                 }
             }
         } catch (IOException e) {
@@ -57,21 +64,16 @@ public class ClassScanner {
             return;
         }
 
-        String className = "";
-        Class clazz;
         for (File file : dirfiles) {
             if (file.isDirectory()) {
                 findClassesByFile(pkgName + "." + file.getName(), pkgPath + "/" + file.getName(), classes);
                 continue;
             }
 
-            // 将文件名去掉末尾的 .class 6个字符
-            className = file.getName();
-            className = className.substring(0, className.length() - 6);
-
-            clazz = loadClass(pkgName + "." + className);
-            if (clazz != null) {
-                classes.add(clazz);
+            ClassAnnotation classAnnotation = ClassReader.read(file.getPath());
+            Class<?> aClass = loadClass(classAnnotation);
+            if (aClass != null) {
+                classes.add(aClass);
             }
         }
 
@@ -81,9 +83,9 @@ public class ClassScanner {
         String pkgDir = pkgName.replace(".", "/");
         Enumeration<JarEntry> entry = jarFile.entries();
 
-        JarEntry jarEntry = null;
-        String name = "", className = "";
-        Class<?> clazz;
+        JarEntry jarEntry;
+        String name = "";
+
         while (entry.hasMoreElements()) {
             jarEntry = entry.nextElement();
             name = jarEntry.getName();
@@ -95,11 +97,14 @@ public class ClassScanner {
                 continue;
             }
 
-
-            className = name.substring(0, name.length() - 6);
-            clazz = loadClass(className.replace("/", "."));
-            if (clazz != null) {
-                classes.add(clazz);
+            try {
+                ClassAnnotation classAnnotation = ClassReader.read(jarFile.getInputStream(jarEntry));
+                Class<?> aClass = loadClass(classAnnotation);
+                if (aClass != null) {
+                    classes.add(aClass);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
@@ -107,14 +112,28 @@ public class ClassScanner {
     }
 
     /*
-    * 利用线程自带的ClassLoader来加载该类
-    * */
-    private static Class<?> loadClass(String fullClassName) {
-        try{
-            return Thread.currentThread().getContextClassLoader().loadClass(fullClassName);
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
+     * 使用当前线程的ClassLoader来加载该类，
+     * class.forName()前者除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static 变量赋值，static方法等。
+     * 而classLoader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。
+     * 亲测，的确如此
+     * */
+    private static Class<?> loadClass(ClassAnnotation classAnnotation) {
+        if (classAnnotation == null) {
+            return null;
         }
+
+        String fullClassName = classAnnotation.getClassName().replace('/','.');
+        for (String annotation : classAnnotation.getAnnotations()) {
+            if (Component.class.getName().equals(annotation)) {
+                try {
+                    return Thread.currentThread().getContextClassLoader().loadClass(fullClassName);
+//            return Class.forName(fullClassName);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
         return null;
     }
 }
