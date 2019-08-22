@@ -1,6 +1,6 @@
 package scan;
 
-import annotation.Component;
+import com.krysta.ioc.annotation.Component;
 
 @Component
 public class B {

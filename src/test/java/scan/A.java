@@ -1,7 +1,7 @@
 package scan;
 
-import annotation.Component;
-import annotation.Autowired;
+import com.krysta.ioc.annotation.Component;
+import com.krysta.ioc.annotation.Autowired;
 
 @Component
 public class A {
