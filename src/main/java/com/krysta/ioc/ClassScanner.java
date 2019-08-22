@@ -1,6 +1,5 @@
 package com.krysta.ioc;
 
-import com.krysta.ioc.annotation.Component;
 import com.krysta.ioc.classreader.ClassAnnotation;
 import com.krysta.ioc.classreader.ClassReader;
 
@@ -10,12 +9,27 @@ import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+/**
+ * Created by Krysta on 2019/8/20.
+ *
+ * @description
+ * @since ioc1.0
+ */
 public class ClassScanner {
+
+    public static Set<Class<?>> scan(String[] packages) {
+        Set<Class<?>> classes = new HashSet<>();
+        for (String aPackage : packages) {
+            classes.addAll(getClazzFromPkg(aPackage));
+        }
+        return classes;
+    }
 
     /*
      * 使用url 同时扫描file和jar，
@@ -70,7 +84,9 @@ public class ClassScanner {
             }
 
             ClassAnnotation classAnnotation = ClassReader.read(file.getPath());
+
             Class<?> aClass = loadClass(classAnnotation);
+
             if (aClass != null) {
                 classes.add(aClass);
             }
@@ -116,23 +132,25 @@ public class ClassScanner {
      * 而classLoader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。
      * 亲测，的确如此
      * */
-    private static Class<?> loadClass(ClassAnnotation classAnnotation) {
+
+    public static Class<?> loadClass(ClassAnnotation classAnnotation) {
         if (classAnnotation == null) {
             return null;
         }
 
-        String fullClassName = classAnnotation.getClassName().replace('/','.');
+        String fullClassName = classAnnotation.getClassName().replace('/', '.');
         for (String annotation : classAnnotation.getAnnotations()) {
-            if (Component.class.getName().equals(annotation)) {
-                try {
-                    return Thread.currentThread().getContextClassLoader().loadClass(fullClassName);
+            for (String containerAnnotation : AnnotationLoader.annotationNames) {
+                if (containerAnnotation.equals(annotation)) {
+                    try {
+                        return Thread.currentThread().getContextClassLoader().loadClass(fullClassName);
 //            return Class.forName(fullClassName);
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-
         return null;
     }
 }

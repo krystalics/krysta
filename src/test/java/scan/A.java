@@ -1,13 +1,16 @@
 package scan;
 
-import com.krysta.ioc.annotation.Component;
 import com.krysta.ioc.annotation.Autowired;
+import com.krysta.ioc.annotation.Scope;
+import com.krysta.ioc.annotation.container.KrystaApplication;
 
-@Component
+@KrystaApplication
+
 public class A {
 
     @Autowired
     public static String s=new B().print();
 
-
+    @Autowired
+    int a;
 }
