@@ -20,4 +20,7 @@ public class BeanRegistry extends AbstractBeanRegistry{
         return definitionMap;
     }
 
+    public List<BeanDefinition> getBeanDefinitions(Class<?> clazz){
+        return classBeanDefinitionListMap.get(clazz);
+    }
 }

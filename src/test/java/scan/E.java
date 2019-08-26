@@ -1,10 +1,12 @@
 package scan;
 
 import com.krysta.ioc.annotation.Autowired;
+import com.krysta.ioc.annotation.Qualifier;
 import com.krysta.ioc.annotation.container.Component;
 
 @Component
-public class C{
+public class E extends A {
     @Autowired
-    D d;
+    @Qualifier(name = "good")
+    SuperA a;
 }

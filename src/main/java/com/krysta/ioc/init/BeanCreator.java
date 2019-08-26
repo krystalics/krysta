@@ -1,9 +1,9 @@
 package com.krysta.ioc.init;
 
 
+import com.krysta.ioc.AnnotationLoader;
 import com.krysta.ioc.BeanDefinition;
-import com.krysta.ioc.annotation.container.Component;
-import com.krysta.ioc.annotation.container.KrystaApplication;
+import com.krysta.ioc.annotation.Qualifier;
 import com.krysta.ioc.exception.InitClassException;
 import com.krysta.ioc.factory.BeanRegistry;
 
@@ -41,7 +41,7 @@ public class BeanCreator {
             return;
         }
         Class<?> clazz = definition.getClazz();
-        List<BeanDefinition> definitions = getBeanDefinitionsByInheritanceChain(clazz);
+        List<BeanDefinition> definitions = BeanRegistry.INSTANCE.getBeanDefinitions(clazz);
         for (BeanDefinition beanDefinition : definitions) {
             WrapperDefinition wrapperDefinition = new WrapperDefinition(beanDefinition, 0);
             tree = new DependencyTreeNode(wrapperDefinition);
@@ -51,7 +51,7 @@ public class BeanCreator {
         }
     }
 
-    public void recursion(WrapperDefinition wrapperDefinition) {
+    private void recursion(WrapperDefinition wrapperDefinition) {
         if (wrapperDefinition.getDefinition().getAutowiredFields().isEmpty()) {
             return;
         }
@@ -73,7 +73,7 @@ public class BeanCreator {
         WrapperDefinition wrapperDefinition = root.getWrapperDefinition();
         List<Field> autowireds = wrapperDefinition.getDefinition().getAutowiredFields();
         for (Field autowired : autowireds) {
-            List<BeanDefinition> definitions = getBeanDefinitionsByInheritanceChain(autowired.getType());
+            List<BeanDefinition> definitions = getBeanDefinitionsByInheritanceChain(autowired.getType(), autowired);
             if (definitions.size() > 0) {
                 for (BeanDefinition definition : definitions) {
                     if (beanCount.containsKey(autowired.getName())) {
@@ -89,30 +89,36 @@ public class BeanCreator {
 
     }
 
-    private List<BeanDefinition> getBeanDefinitionsByInheritanceChain(Class<?> clazz) {
+    private List<BeanDefinition> getBeanDefinitionsByInheritanceChain(Class<?> clazz, Field field) {
         List<Class<?>> classes = new ArrayList<>();
         while (clazz != null) {
             classes.add(clazz);
             clazz = clazz.getSuperclass();
         }
-        List<BeanDefinition> swiftBeanDefinitionList = new ArrayList<>();
+        List<BeanDefinition> beanDefinitionList = new ArrayList<>();
         for (Class<?> aClass : classes) {
-            Component component = aClass.getAnnotation(Component.class);
-            KrystaApplication krystaApplication = aClass.getAnnotation(KrystaApplication.class);
-            if (component != null || krystaApplication != null) {
-                List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(aClass);
-
+            List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(aClass);
+            if (AnnotationLoader.inContainer(aClass)) {
                 for (String beanName : beanNames) {
                     BeanDefinition beanDefinition = BeanRegistry.INSTANCE.getBeanDefinition(beanName);
                     if (beanDefinition.getClazz().equals(aClass)) {
-                        swiftBeanDefinitionList.add(beanDefinition);
+                        beanDefinitionList.add(beanDefinition);
                         break;
                     }
+                }
+            } else if (beanNames != null && aClass.equals(field.getType())) { //只有当前类没有在容器中时，会走下面的逻辑
+                if (beanNames.size() > 1) {
+                    Qualifier qualifier = field.getAnnotation(Qualifier.class);
+                    if (qualifier != null) {
+                        beanDefinitionList.addAll(getBeanDefinitionsByInheritanceChain(BeanRegistry.INSTANCE.getBeanDefinition(qualifier.name()).getClazz(), null));
+                    }
+                } else if (beanNames.size() == 1) {
+                    beanDefinitionList.addAll(getBeanDefinitionsByInheritanceChain(BeanRegistry.INSTANCE.getBeanDefinition(beanNames.get(0)).getClazz(), null));
                 }
             }
         }
 
-        return swiftBeanDefinitionList;
+        return beanDefinitionList;
     }
 
 

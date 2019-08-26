@@ -81,7 +81,7 @@ public class TreeUtils {
         }
 
         StringBuilder errorMsg = new StringBuilder();
-        for (int i = index; i < path.size(); i++) {
+        for (int i = index ; i < path.size(); i++) {
             errorMsg.append("\n").append(path.get(i).getClazz().getName());
         }
         throw new InitClassException(errorMsg.toString() + " has a dead circle dependency");

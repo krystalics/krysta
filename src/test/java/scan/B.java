@@ -4,8 +4,10 @@ import com.krysta.ioc.annotation.Autowired;
 import com.krysta.ioc.annotation.container.Component;
 
 @Component
-public class B extends A{
+public class B{
 
+    @Autowired
+    C c;
 
     public String print(){
         System.out.println("I'm B");

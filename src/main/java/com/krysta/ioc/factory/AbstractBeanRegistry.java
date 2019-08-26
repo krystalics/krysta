@@ -6,8 +6,10 @@ import com.krysta.ioc.ScopeType;
 import com.krysta.ioc.annotation.Autowired;
 import com.krysta.ioc.annotation.DestroyMethod;
 import com.krysta.ioc.annotation.InitMethod;
+import com.krysta.ioc.annotation.Qualifier;
 import com.krysta.ioc.annotation.Scope;
 import com.krysta.ioc.exception.BeanNameDuplicateException;
+import com.krysta.ioc.exception.InitClassException;
 import com.krysta.ioc.exception.NoSuchBeanException;
 import com.krysta.ioc.util.ClassUtil;
 
@@ -47,11 +49,13 @@ public abstract class AbstractBeanRegistry {
             definitionMap.put(beanName, definition);
         }
 
+        setClassBeanDefinitionListMap();
+
         for (Map.Entry<String, BeanDefinition> definitionEntry : definitionMap.entrySet()) {
             completeRegister(definitionEntry.getValue());
         }
 
-        setClassBeanDefinitionListMap();
+
     }
 
     private void setClassBeanDefinitionListMap() {
@@ -156,24 +160,27 @@ public abstract class AbstractBeanRegistry {
         for (Field field : fields) {
             Autowired autowired = field.getAnnotation(Autowired.class);
             if (autowired != null) {
-                checkNoSuchBean(field.getType());
-                map.put(field, getBeanName(field.getType()));
+                String beanName = "";
+                List<String> list = typeBeanNames.get(field.getType());
+                if (list == null) {
+                    throw new NoSuchBeanException(clazz);
+                }
+
+                Qualifier qualifier = field.getAnnotation(Qualifier.class);
+                if (list.size() > 1 && qualifier == null) {
+                    throw new InitClassException(clazz.getName() + " contains more than 2 beanNames,please select one of them with @Qualifier");
+                }
+                if (list.size() == 1) {
+                    beanName = list.get(0);
+                }
+                if (qualifier != null) {
+                    beanName = qualifier.name();
+                }
+
+                map.put(field, beanName);
             }
         }
         return map;
-    }
-
-    private <T> void checkNoSuchBean(Class<T> clazz) {
-        boolean contains = false;
-        for (Map.Entry<String, BeanDefinition> definitionEntry : definitionMap.entrySet()) {
-            if (definitionEntry.getValue().getClazz().equals(clazz)) {
-                contains = true;
-                break;
-            }
-        }
-        if (!contains) {
-            throw new NoSuchBeanException(clazz);
-        }
     }
 
 }

@@ -28,7 +28,6 @@ public class ClassScannerTest {
         packages.add("scan");
         beanFactory.setPackages(packages);
         beanFactory.init();
-
     }
     @Test
     public void scan()  {

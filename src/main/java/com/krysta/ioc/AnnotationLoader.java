@@ -1,11 +1,13 @@
 package com.krysta.ioc;
 
 import com.krysta.ioc.annotation.container.Component;
-import com.krysta.ioc.annotation.container.KrystaApplication;
+import com.krysta.ioc.annotation.container.Application;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Krysta on 2019/8/22.
@@ -21,12 +23,12 @@ public class AnnotationLoader {
 
     static {
         annotationNames.add(Component.class.getName());
-        annotationNames.add(KrystaApplication.class.getName());
+        annotationNames.add(Application.class.getName());
     }
 
     static {
         annotations.add(Component.class);
-        annotations.add(KrystaApplication.class);
+        annotations.add(Application.class);
     }
 
     public static String getName(Class<?> clazz) {
@@ -43,8 +45,8 @@ public class AnnotationLoader {
 
             }
 
-            if (annotation.annotationType().equals(KrystaApplication.class)) {
-                KrystaApplication application=clazz.getAnnotation(KrystaApplication.class);
+            if (annotation.annotationType().equals(Application.class)) {
+                Application application = clazz.getAnnotation(Application.class);
                 if ("".equals(application.value())) {
                     beanName = clazz.getSimpleName();
                 } else {
@@ -54,7 +56,13 @@ public class AnnotationLoader {
         }
 
 
-
         return beanName;
+    }
+
+    public static boolean inContainer(Class<?> clazz) {
+        Component component = clazz.getAnnotation(Component.class);
+        Application krystaApplication = clazz.getAnnotation(Application.class);
+
+        return component != null || krystaApplication != null;
     }
 }

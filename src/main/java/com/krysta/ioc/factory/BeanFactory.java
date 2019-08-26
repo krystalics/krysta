@@ -4,12 +4,14 @@ import com.krysta.ioc.BeanDefinition;
 import com.krysta.ioc.ClassScanner;
 import com.krysta.ioc.ScopeType;
 import com.krysta.ioc.init.BeanCreator;
+import com.krysta.ioc.util.KrystaLogger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * Created by Krysta on 2019/8/22.
@@ -45,6 +47,7 @@ public class BeanFactory {
             recursionCreateBean(beanRegistry.getBeanDefinitionMap()); //将所有加载过的beanName都删掉
         }
 
+       KrystaLogger.INSTANCE.info("KrystaContainer has been initialized successfully");
 
     }
 
