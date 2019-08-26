@@ -90,23 +90,10 @@ public class BeanCreator {
     }
 
     private List<BeanDefinition> getBeanDefinitionsByInheritanceChain(Class<?> clazz, Field field) {
-        List<Class<?>> classes = new ArrayList<>();
-        while (clazz != null) {
-            classes.add(clazz);
-            clazz = clazz.getSuperclass();
-        }
         List<BeanDefinition> beanDefinitionList = new ArrayList<>();
-        for (Class<?> aClass : classes) {
-            List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(aClass);
-            if (AnnotationLoader.inContainer(aClass)) {
-                for (String beanName : beanNames) {
-                    BeanDefinition beanDefinition = BeanRegistry.INSTANCE.getBeanDefinition(beanName);
-                    if (beanDefinition.getClazz().equals(aClass)) {
-                        beanDefinitionList.add(beanDefinition);
-                        break;
-                    }
-                }
-            } else if (beanNames != null && aClass.equals(field.getType())) { //只有当前类没有在容器中时，会走下面的逻辑
+        if (!AnnotationLoader.inContainer(clazz)) {
+            List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(clazz);
+            if (beanNames != null) { //只有当前类没有在容器中时，会走下面的逻辑
                 if (beanNames.size() > 1) {
                     Qualifier qualifier = field.getAnnotation(Qualifier.class);
                     if (qualifier != null) {
@@ -114,6 +101,23 @@ public class BeanCreator {
                     }
                 } else if (beanNames.size() == 1) {
                     beanDefinitionList.addAll(getBeanDefinitionsByInheritanceChain(BeanRegistry.INSTANCE.getBeanDefinition(beanNames.get(0)).getClazz(), null));
+                }
+            }
+        }
+
+        List<Class<?>> classes = new ArrayList<>();
+        while (clazz != null && !clazz.equals(Object.class)) {
+            classes.add(clazz);
+            clazz = clazz.getSuperclass();
+        }
+        for (Class<?> aClass : classes) {
+            List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(aClass);
+
+            for (String beanName : beanNames) {
+                BeanDefinition beanDefinition = BeanRegistry.INSTANCE.getBeanDefinition(beanName);
+                if (beanDefinition.getClazz().equals(aClass)) {
+                    beanDefinitionList.add(beanDefinition);
+                    break;
                 }
             }
         }
