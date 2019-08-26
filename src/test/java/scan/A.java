@@ -4,13 +4,9 @@ import com.krysta.ioc.annotation.Autowired;
 import com.krysta.ioc.annotation.Scope;
 import com.krysta.ioc.annotation.container.KrystaApplication;
 
-@KrystaApplication
+@KrystaApplication(value = "good")
 
-public class A {
-
+public class A implements SuperA {
     @Autowired
-    public static String s=new B().print();
-
-    @Autowired
-    int a;
+    D d;
 }
