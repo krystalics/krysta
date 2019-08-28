@@ -8,5 +8,5 @@ import com.krysta.ioc.annotation.container.Component;
 public class E extends A {
     @Autowired
     @Qualifier(name = "good")
-    SuperA a;
+    public SuperA a;
 }

@@ -7,6 +7,6 @@ import com.krysta.ioc.annotation.container.Application;
 @Application(value = "good")
 public class A implements SuperA {
     @Autowired
-    B b;
+    public B b;
 
 }

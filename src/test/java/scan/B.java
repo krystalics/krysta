@@ -6,7 +6,7 @@ import com.krysta.ioc.annotation.container.Component;
 @Component
 public class B{
 
-    @Autowired
+    public  @Autowired
     C c;
 
     public String print(){

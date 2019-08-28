@@ -1,17 +1,13 @@
-import com.krysta.ioc.ClassScanner;
-import com.krysta.ioc.annotation.Autowired;
-import com.krysta.ioc.annotation.container.Component;
-import com.krysta.ioc.factory.AbstractBeanRegistry;
+import com.krysta.ioc.ApplicationContext;
+import com.krysta.ioc.annotation.container.Application;
 import com.krysta.ioc.factory.BeanFactory;
-import com.krysta.ioc.factory.BeanRegistry;
 import org.junit.Before;
 import org.junit.Test;
+import scan.A;
+import scan.D;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Krysta on 2019/8/20.
@@ -23,11 +19,13 @@ public class ClassScannerTest {
 
     @Before
     public void before(){
-        BeanFactory beanFactory = new BeanFactory();
+//        BeanFactory beanFactory = new BeanFactory();
+
         List<String> packages = new ArrayList<>();
         packages.add("scan");
-        beanFactory.setPackages(packages);
-        beanFactory.init();
+        ApplicationContext.getContext().setPackages(packages);
+        ApplicationContext.getContext().init();
+
     }
     @Test
     public void scan()  {
@@ -38,6 +36,8 @@ public class ClassScannerTest {
 //
 
         System.out.println();
+        D d = ApplicationContext.getContext().getBean("D", D.class, "d");
 
+        System.out.println();
     }
 }

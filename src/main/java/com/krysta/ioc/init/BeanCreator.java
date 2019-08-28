@@ -1,11 +1,11 @@
 package com.krysta.ioc.init;
 
 
-import com.krysta.ioc.AnnotationLoader;
+import com.krysta.ioc.factory.BeanRegistry;
+import com.krysta.ioc.util.AnnotationUtil;
 import com.krysta.ioc.BeanDefinition;
 import com.krysta.ioc.annotation.Qualifier;
 import com.krysta.ioc.exception.InitClassException;
-import com.krysta.ioc.factory.BeanRegistry;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -91,7 +91,7 @@ public class BeanCreator {
 
     private List<BeanDefinition> getBeanDefinitionsByInheritanceChain(Class<?> clazz, Field field) {
         List<BeanDefinition> beanDefinitionList = new ArrayList<>();
-        if (!AnnotationLoader.inContainer(clazz)) {
+        if (!AnnotationUtil.inContainer(clazz)) {
             List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(clazz);
             if (beanNames != null) { //只有当前类没有在容器中时，会走下面的逻辑
                 if (beanNames.size() > 1) {

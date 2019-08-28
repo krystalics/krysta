@@ -2,6 +2,7 @@ package com.krysta.ioc;
 
 import com.krysta.ioc.classreader.ClassAnnotation;
 import com.krysta.ioc.classreader.ClassReader;
+import com.krysta.ioc.util.AnnotationUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -140,7 +141,7 @@ public class ClassScanner {
 
         String fullClassName = classAnnotation.getClassName().replace('/', '.');
         for (String annotation : classAnnotation.getAnnotations()) {
-            for (String containerAnnotation : AnnotationLoader.annotationNames) {
+            for (String containerAnnotation : AnnotationUtil.annotationNames) {
                 if (containerAnnotation.equals(annotation)) {
                     try {
                         return Thread.currentThread().getContextClassLoader().loadClass(fullClassName);

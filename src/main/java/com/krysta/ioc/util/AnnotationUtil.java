@@ -1,13 +1,11 @@
-package com.krysta.ioc;
+package com.krysta.ioc.util;
 
 import com.krysta.ioc.annotation.container.Component;
 import com.krysta.ioc.annotation.container.Application;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Krysta on 2019/8/22.
@@ -16,20 +14,16 @@ import java.util.Map;
  * @since ioc1.0
  */
 
-public class AnnotationLoader {
+public class AnnotationUtil {
 
     public static List<String> annotationNames = new ArrayList<>();
-    public static List<Class> annotations = new ArrayList<>();
+
 
     static {
         annotationNames.add(Component.class.getName());
         annotationNames.add(Application.class.getName());
     }
 
-    static {
-        annotations.add(Component.class);
-        annotations.add(Application.class);
-    }
 
     public static String getName(Class<?> clazz) {
         Annotation[] annotations = clazz.getAnnotations();
