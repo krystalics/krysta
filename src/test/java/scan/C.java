@@ -5,5 +5,6 @@ import com.krysta.ioc.annotation.container.Component;
 
 @Component
 public class C{
-
+    @Autowired
+    public D e;
 }

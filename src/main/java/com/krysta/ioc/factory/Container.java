@@ -26,11 +26,5 @@ public interface Container {
      */
     <T> T getBean(String beanName, Class<T> clazz);
 
-    /**
-     * getBean by its beanName , type and parameters
-     * used in prototype,not singleton
-     */
-    <T> T getBean(String beanName, Class<T> clazz, Object... params);
-
 
 }

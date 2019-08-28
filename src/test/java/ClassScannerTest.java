@@ -4,7 +4,9 @@ import com.krysta.ioc.factory.BeanFactory;
 import org.junit.Before;
 import org.junit.Test;
 import scan.A;
+import scan.B;
 import scan.D;
+import scan.E;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,26 +20,20 @@ import java.util.List;
 public class ClassScannerTest {
 
     @Before
-    public void before(){
-//        BeanFactory beanFactory = new BeanFactory();
-
+    public void before() {
         List<String> packages = new ArrayList<>();
         packages.add("scan");
         ApplicationContext.getContext().setPackages(packages);
         ApplicationContext.getContext().init();
 
     }
+
     @Test
-    public void scan()  {
-
-        //类路径下的包(external libraries下)，java目录和test的java下的包可以扫描,
-//        Set<Class<?>> classes = ClassScanner.getClazzFromPkg("scan");//注意在test中如果有同名的包也会扫描
-//        Set<Class<?>> junit = ClassScanner.getClazzFromPkg("junit");
-//
-
-        System.out.println();
-        D d = ApplicationContext.getContext().getBean("D", D.class, 3);
-
+    public void scan() {
+        A a = ApplicationContext.getContext().getBean("E",A.class);
+        B b = ApplicationContext.getContext().getBean(B.class);
+        D d = ApplicationContext.getContext().getBean("D", D.class);
+        E e = ApplicationContext.getContext().getBean(E.class);
         System.out.println();
     }
 }

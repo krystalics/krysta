@@ -9,9 +9,6 @@ import com.krysta.ioc.exception.NoSuchBeanNameException;
 import com.krysta.ioc.init.BeanCreator;
 import com.krysta.ioc.util.KrystaLogger;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -94,62 +91,23 @@ public class BeanFactory implements Container {
     @Override
     public <T> T getBean(String beanName, Class<T> clazz) {
         if (isMatched(beanName, clazz)) {
-            if (isSingleton(beanName)) { //如果是单例就从容器中返回
-                return (T) singletonObjects.get(beanName);
-            } else {
-                return getBean(beanName, clazz, (Object) null);
-            }
+            return (T) singletonObjects.get(beanName);
         } else {
             throw new GetBeanException(clazz, " can not match the beanname");
         }
-    }
-
-    @Override
-    public <T> T getBean(String beanName, Class<T> clazz, Object... params) {
-
-        if (isMatched(beanName, clazz)) {
-            if (isSingleton(beanName)) {
-                return (T) singletonObjects.get(beanName);
-            } else {
-                return createBean(clazz, params);
-            }
-        } else {
-            throw new GetBeanException(clazz, " can not match the beanname");
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T> T createBean(Class<T> clazz, Object... params) {
-        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
-        T bean = null;
-        for (Constructor<?> constructor : constructors) {
-            constructor.setAccessible(true);
-            try {
-                bean = (T) constructor.newInstance(params);
-                //如果参数不匹配，会直接走catch，不会到下面break
-                break;
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | IllegalArgumentException e) {
-            }
-
-        }
-        if (bean == null) {
-            throw new GetBeanException(clazz, " parameters can not match!");
-        }else{
-            //Todo 这里需要对多例中的field赋值，是一个麻烦的问题
-
-        }
-        return bean;
-
-    }
-
-    private boolean isSingleton(String beanName) {
-        checkBeanName(beanName);
-        return beanRegistry.getBeanDefinition(beanName).getScopeType().equals(ScopeType.SINGLETON);
     }
 
     private boolean isMatched(String beanName, Class<?> clazz) {
         checkBeanName(beanName);
-        return beanRegistry.getBeanDefinition(beanName).getClazz().equals(clazz);
+        boolean flag=false;
+        List<String> beanNames = beanRegistry.getBeanNamesByType(clazz);
+        for (String name : beanNames) {
+            if(name.equals(beanName)){
+                flag=true;
+                break;
+            }
+        }
+        return flag;
     }
 
     private void checkBeanName(String beanName) {
