@@ -8,10 +8,15 @@ import com.krysta.ioc.annotation.container.Component;
 @Component
 @Scope(type = ScopeType.PROTOTYPE)
 public class D {
-    public D(int s){
+
+    @Autowired
+    public E e;
+
+    public D(int s) {
 
     }
-    public D(){
+
+    public D() {
 
     }
 }

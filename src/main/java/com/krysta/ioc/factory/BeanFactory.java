@@ -10,6 +10,7 @@ import com.krysta.ioc.init.BeanCreator;
 import com.krysta.ioc.util.KrystaLogger;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -133,6 +134,9 @@ public class BeanFactory implements Container {
         }
         if (bean == null) {
             throw new GetBeanException(clazz, " parameters can not match!");
+        }else{
+            //Todo 这里需要对多例中的field赋值，是一个麻烦的问题
+
         }
         return bean;
 

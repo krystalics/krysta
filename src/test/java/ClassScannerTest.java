@@ -36,7 +36,7 @@ public class ClassScannerTest {
 //
 
         System.out.println();
-        D d = ApplicationContext.getContext().getBean("D", D.class, "d");
+        D d = ApplicationContext.getContext().getBean("D", D.class, 3);
 
         System.out.println();
     }
