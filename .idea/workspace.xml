@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="79a62ae7-20e8-448e-a66a-4eb3e88be577" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ClassScannerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ClassScannerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/scan/C.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/scan/C.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/scan/D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/scan/D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/krysta/ioc/classreader/ClassReaderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/krysta/ioc/factory/BeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/krysta/ioc/factory/BeanFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/krysta/ioc/factory/Container.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/krysta/ioc/factory/Container.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ClassScannerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ClassScannerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/scan/C.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/scan/C.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/scan/D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/scan/D.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,19 +65,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ClassScannerTest.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/scan/A.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="41" column="48" lean-forward="true" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+            <state relative-caret-position="154">
+              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ClassScannerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/scan/E.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
+            <state relative-caret-position="124">
               <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -191,8 +213,8 @@
         <option value="$PROJECT_DIR$/src/test/java/scan/D.java" />
         <option value="$PROJECT_DIR$/src/test/java/scan/C.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/Container.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ClassScannerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ClassScannerTest.java" />
       </list>
     </option>
   </component>
@@ -313,14 +335,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="scan" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -447,7 +461,7 @@
       <workItem from="1566954639103" duration="123000" />
       <workItem from="1566956565388" duration="644000" />
       <workItem from="1566961735159" duration="12600000" />
-      <workItem from="1566990259717" duration="5808000" />
+      <workItem from="1566990259717" duration="6280000" />
     </task>
     <task id="LOCAL-00001" summary="写完基本的classreading和扫描操作，">
       <created>1566288592420</created>
@@ -512,13 +526,17 @@
       <option name="project" value="LOCAL" />
       <updated>1566980548012</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="基本删除 多例部分，除了基础的scope，">
+      <created>1566998916804</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1566998916805</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ClassScannerTest_scan - 2019.08.28 at 16h 13m 22s.xml">
-      <configuration name="ClassScannerTest.scan" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ClassScannerTest_scan - 2019.08.28 at 16h 17m 53s.xml">
       <configuration name="ClassScannerTest.scan" configurationId="JUnit" />
     </history-entry>
@@ -546,15 +564,17 @@
     <history-entry file="ClassScannerTest_scan - 2019.08.28 at 21h 23m 45s.xml">
       <configuration name="ClassScannerTest.scan" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ClassScannerTest_scan - 2019.08.28 at 21h 27m 52s.xml">
+      <configuration name="ClassScannerTest.scan" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111664000" />
+    <option name="totallyTimeSpent" value="112136000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988399" visible="true" weight="0.23087248" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988399" visible="true" weight="0.23087248" />
       <window_info id="Structure" order="1" sideWeight="0.5011601" side_tool="true" weight="0.32684565" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -647,19 +667,8 @@
     <MESSAGE value="基本完成容器初始化。" />
     <MESSAGE value="基本完成容器初始化--II" />
     <MESSAGE value="基本完成容器，不过多例的情况需要注意 线程安全等问题。" />
-    <option name="LAST_COMMIT_MESSAGE" value="基本完成容器，不过多例的情况需要注意 线程安全等问题。" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ClassScannerTest.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="基本删除 多例部分，除了基础的scope，" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本删除 多例部分，除了基础的scope，" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ioc$ClassScannerTest_scan.ic" NAME="ClassScannerTest.scan Coverage Results" MODIFIED="1566802000430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -974,13 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/scan/A.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/scan/B.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -1011,16 +1013,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/scan/E.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/Container.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
@@ -1028,22 +1020,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ClassScannerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="41" column="48" lean-forward="true" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
+        <state relative-caret-position="124">
           <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2849#2850#0" expanded="true" />
             <element signature="e#2902#2903#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/scan/E.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/krysta/ioc/classreader/ClassReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ClassScannerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/scan/A.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
         </state>
       </provider>
     </entry>
