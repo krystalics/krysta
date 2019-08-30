@@ -8,8 +8,8 @@ import java.io.InputStream;
  */
 public class U1 {
     /*
-    * 只读一个字节的无符号整数，可以通过 short转换
-    * 相当于 DataInputStream.readUnsignedByte
+    * unsigned one byte，transfer by short
+    * this method is around the readDataInputStream.readUnsignedByte
     * */
     public static short read(InputStream in) {
         byte[] bytes = new byte[1];
@@ -19,7 +19,7 @@ public class U1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //如果不做&运算，转为short时 最高位为1就会被转为负数。因为short是有符号的
+
         return (short) (bytes[0] & 0xFF);
     }
 }

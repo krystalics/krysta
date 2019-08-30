@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Krysta on 2019/8/22.
  *
- * @description 用于增加需要扫描的注解，用于细化模块，比如@Service ,@Controller等
+ * used to add new Annotation into Container
  * @since ioc1.0
  */
 

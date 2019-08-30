@@ -13,17 +13,14 @@ import java.util.Set;
  * This class created on 2019/8/12
  *
  * @author Krysta
- * @description
  * */
 public class TreeUtils {
 
     private static List<BeanDefinition> path = new ArrayList<>();
 
-    /**
-     * tree表示整棵树的根节点，root是子树的根节点
-     * 采用深度优先搜索tree的叶子，查看是否与root相符合。
-     * 如果有循环依赖，叶子的 circle=true，并不会把该节点与叶子相融，此时这个叶子停止生长
-     */
+    /*
+    * build the tree from DFS algorithm to replace the tree's leaf with new root node
+    * */
     public static void buildTree(DependencyTreeNode tree, DependencyTreeNode root) {
         if (tree == null) return;
 
@@ -39,17 +36,17 @@ public class TreeUtils {
 
 
     /*
-     * 判断循环依赖，采用深度优先搜索，判断一条路径中有没有重复的元素
+     * judge circle dependency by a chain has duplicated node
      * */
 
     public static void isCircle(DependencyTreeNode root) {
         if (root == null) return;
-        path.add(root.getWrapperDefinition().definition); //将节点的SwiftBeanDefinition信息加入到路径中
+        path.add(root.getWrapperDefinition().definition);
 
         for (DependencyTreeNode node : root.next) {
             isCircle(node);
         }
-        if (!path.isEmpty()) { //因为有的bean中没有autowired，所以没有next，自然就需要判空
+        if (!path.isEmpty()) {
             Set<BeanDefinition> set = new HashSet<>();
             BeanDefinition definition = null;
 
@@ -62,11 +59,11 @@ public class TreeUtils {
                 }
             }
 
-            if (definition != null) { //说明有重复的节点
+            if (definition != null) { //it has duplicate node to dead circle
                 circleError(definition);
             }
 
-            path.remove(path.size() - 1); //将最后的叶子节点删除，用于判断另一个调用链
+            path.remove(path.size() - 1); //delete the leaf ,to judge another chain
         }
     }
 

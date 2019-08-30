@@ -32,7 +32,7 @@ public class ConstantUtf8 extends ConstantInfo {
     }
 
     /*
-    * 以下部分 copy 自 java.io.DataInputStream.readUTF()
+    *  copy from java.io.DataInputStream.readUTF()
     * */
     private String readUtf8(byte[] bytes) throws UTFDataFormatException {
         int c, char2, char3;
@@ -40,7 +40,7 @@ public class ConstantUtf8 extends ConstantInfo {
         int chars_count = 0;
         char[] chars = new char[bytes.length];
 
-        //将bytes转为chars
+        //bytes to chars
         while (count < bytes.length) {
             c = (int) bytes[count] & 0xFF;
             if (c > 127) break;
@@ -48,7 +48,7 @@ public class ConstantUtf8 extends ConstantInfo {
             chars[chars_count++] = (char) c;
         }
 
-        //将bytes中大于127（即不能转换成char的部分）转为int之后 右移4位继续转为char
+
         while (count < bytes.length) {
             c = (int) bytes[count] & 0xFF;
             switch (c >> 4) {
@@ -99,7 +99,7 @@ public class ConstantUtf8 extends ConstantInfo {
                             "malformed input around byte " + count);
             }
         }
-        // 字符数可能小于 utf的长度
+
         return new String(chars, 0, chars_count);
     }
 }

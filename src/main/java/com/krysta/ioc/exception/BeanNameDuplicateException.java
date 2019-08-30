@@ -3,7 +3,6 @@ package com.krysta.ioc.exception;
 /**
  * Created by Krysta on 2019/8/23.
  *
- * @description
  * @since ioc1.0
  */
 public class BeanNameDuplicateException extends RuntimeException{

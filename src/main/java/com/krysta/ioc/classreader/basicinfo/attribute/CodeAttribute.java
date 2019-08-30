@@ -11,10 +11,10 @@ import java.io.InputStream;
  * Created by wangxiandeng on 2017/1/25.
  */
 public class CodeAttribute extends AttributeInfo {
-    public int maxStack; //最大虚拟机栈数量
-    public int maxLocals; //最大本地机栈数量
-    public long codeLength; //指令的字节长度，即code数组的长度
-    public short[] code; //
+    public int maxStack;
+    public int maxLocals;
+    public long codeLength;
+    public short[] code;
     public int exceptionTableLength;
     public ExceptionTable[] exceptionTables;
     public int attributes_count;

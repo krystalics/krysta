@@ -19,7 +19,6 @@ import java.util.jar.JarFile;
 /**
  * Created by Krysta on 2019/8/20.
  *
- * @description
  * @since ioc1.0
  */
 public class ClassScanner {
@@ -32,21 +31,21 @@ public class ClassScanner {
         return classes;
     }
 
-    /*
-     * 使用url 同时扫描file和jar，
-     * */
+    /**
+     * use url to scan file and jar
+     */
     public static Set<Class<?>> getClazzFromPkg(String pkg) {
-        Set<Class<?>> classes = new LinkedHashSet<>(); //按照添加顺序排序
+        Set<Class<?>> classes = new LinkedHashSet<>();
 
-        String pkgDirName = pkg.replace('.', '/'); //将包名中的.转为/ 变为目录
+        String pkgDirName = pkg.replace('.', '/');
         try {
-            // 这里用ClassScanner 的类加载器扫描这个包，这个类加载器如果没有自己写的话，一般最终会是有JVM提供的 AppClassLoader，
+            // this place use ClassScanner's classLoader ==>AppClassLoader
             Enumeration<URL> urls = ClassScanner.class.getClassLoader().getResources(pkgDirName);
             while (urls.hasMoreElements()) {
                 URL url = urls.nextElement();
                 String protocol = url.getProtocol();
                 if ("file".equals(protocol)) {
-                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8"); //获取包名的物理路径
+                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
                     findClassesByFile(pkg, filePath, classes);
                 } else if ("jar".equals(protocol)) {
                     JarFile jar = ((JarURLConnection) url.openConnection()).getJarFile();
@@ -60,11 +59,9 @@ public class ClassScanner {
     }
 
     /*
-     *  扫描包路径下的所有class文件
-     *
-     * @param pkgName 包名
-     * @param pkgPath 包对应的绝对地址
-     * @param classes 保存包路径下class的集合
+     * @param pkgName
+     * @param pkgPath
+     * @param classes
      * */
     private static void findClassesByFile(String pkgName, String pkgPath, Set<Class<?>> classes) {
         File dir = new File(pkgPath);
@@ -72,7 +69,6 @@ public class ClassScanner {
             return;
         }
 
-        // 过滤器为 directory或者class文件才可以通过
         File[] dirfiles = dir.listFiles(pathname -> pathname.isDirectory() || pathname.getName().endsWith("class"));
         if (dirfiles == null || dirfiles.length == 0) {
             return;
@@ -128,10 +124,8 @@ public class ClassScanner {
     }
 
     /*
-     * 使用当前线程的ClassLoader来加载该类，
-     * class.forName()前者除了将类的.class文件加载到jvm中之外，还会对类进行解释，执行类中的static 变量赋值，static方法等。
-     * 而classLoader只干一件事情，就是将.class文件加载到jvm中，不会执行static中的内容,只有在newInstance才会去执行static块。
-     * 亲测，的确如此
+     * class.forName() will load the .class file to jvm and run the static code，static method etc.
+     * classLoader just load .class file into jvm ,only in newInstance() to run static code，static method etc.
      * */
 
     public static Class<?> loadClass(ClassAnnotation classAnnotation) {

@@ -12,7 +12,7 @@ public class ConstantDouble extends ConstantInfo {
     public long highValue;
     public long lowValue;
     /*
-    * Double8个字节，所以分两步来获得高位和低位
+    * Double are 8 bytes
     * */
     public void read(InputStream in) {
         highValue = U4.read(in);

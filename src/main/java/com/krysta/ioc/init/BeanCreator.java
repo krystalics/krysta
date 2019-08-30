@@ -19,12 +19,12 @@ import java.util.Map;
  * This class created on 2019/8/13
  *
  * @author Krysta
- * @description 构建依赖树并创建bean，与SwiftBeanFactory对接
+ * build the dependency tree and create bean from bottom
  * */
 
 public class BeanCreator {
-    private DependencyTreeNode tree; //需要构建的树
-    private Map<String, Integer> beanCount = new HashMap<>(); //对autowired重复的BeanDefinition进行编号 ，方便构建出依赖树
+    private DependencyTreeNode tree;
+    private Map<String, Integer> beanCount = new HashMap<>();
 
     private final List<String> beanNamesLoaded;
     private final Map<String, Object> singletonObjects;
@@ -55,20 +55,17 @@ public class BeanCreator {
         if (wrapperDefinition.getDefinition().getAutowiredFields().isEmpty()) {
             return;
         }
-        DependencyTreeNode root = new DependencyTreeNode(wrapperDefinition); //每次递归都会有一个子节点的树根
+        DependencyTreeNode root = new DependencyTreeNode(wrapperDefinition);
         getAllSubNode(root);
 
-        TreeUtils.buildTree(tree, root); //将这一课子树加到总的树中
-        TreeUtils.isCircle(tree); //如果有循环依赖，抛出异常
+        TreeUtils.buildTree(tree, root);
+        TreeUtils.isCircle(tree);
 
         for (int i = 0; i < root.next.size(); i++) {
             recursion(root.next.get(i).getWrapperDefinition());
         }
     }
 
-    /*
-     * 获得root的所有子节点，子节点会将自己的继承链都加入进root，用于判断继承链中的循环依赖
-     * */
     private void getAllSubNode(DependencyTreeNode root) {
         WrapperDefinition wrapperDefinition = root.getWrapperDefinition();
         List<Field> autowireds = wrapperDefinition.getDefinition().getAutowiredFields();
@@ -93,7 +90,7 @@ public class BeanCreator {
         List<BeanDefinition> beanDefinitionList = new ArrayList<>();
         if (!AnnotationUtil.inContainer(clazz)) {
             List<String> beanNames = BeanRegistry.INSTANCE.getBeanNamesByType(clazz);
-            if (beanNames != null) { //只有当前类没有在容器中时，会走下面的逻辑
+            if (beanNames != null) {
                 if (beanNames.size() > 1) {
                     Qualifier qualifier = field.getAnnotation(Qualifier.class);
                     if (qualifier != null) {
@@ -125,11 +122,7 @@ public class BeanCreator {
         return beanDefinitionList;
     }
 
-
-    /*
-     * 后序遍历该树，构造整个依赖树
-     * */
-    public void createBeansByTree(DependencyTreeNode root) {
+    private void createBeansByTree(DependencyTreeNode root) {
         if (root == null) {
             return;
         }
@@ -159,8 +152,8 @@ public class BeanCreator {
 
     public <T> T createBean(Class<T> tClass, Map<Field, String> fields) throws Exception {
 
-        checkModifier(tClass); //如果注解了SwiftBean的类不是public的，抛出异常
-        checkConstructor(tClass); //检查是否包含一个空的构造函数
+        checkModifier(tClass);
+        checkConstructor(tClass);
 
         final Constructor<T> declaredConstructor = tClass.getDeclaredConstructor();
         declaredConstructor.setAccessible(true);

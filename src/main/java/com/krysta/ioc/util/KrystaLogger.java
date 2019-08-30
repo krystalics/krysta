@@ -3,6 +3,11 @@ package com.krysta.ioc.util;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Created by Krysta on 2019/8/22.
+ *
+ * @since ioc1.0
+ */
 public enum KrystaLogger {
     INSTANCE;
     private final String MSGNAME = "Krysta";

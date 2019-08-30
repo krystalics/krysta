@@ -18,7 +18,6 @@ import java.util.Set;
 /**
  * Created by Krysta on 2019/8/22.
  *
- * @description
  * @since ioc1.0
  */
 public class BeanFactory implements Container {
@@ -36,17 +35,17 @@ public class BeanFactory implements Container {
         for (int i = 0; i < packages.size(); i++) {
             pkgs[i] = packages.get(i);
         }
-        Set<Class<?>> classes = ClassScanner.scan(pkgs); //扫描这些包
-        beanRegistry.registerClasses(classes); //注册
+        Set<Class<?>> classes = ClassScanner.scan(pkgs);
+        beanRegistry.registerClasses(classes);
 
         beanRegistry.getBeanDefinitionMap().forEach((k, v) -> {
-            if (v.getScopeType().equals(ScopeType.SINGLETON)) { //将所有单例的加进容器
+            if (v.getScopeType().equals(ScopeType.SINGLETON)) {
                 beanNamesNotLoaded.add(k);
             }
         });
 
         while (!beanNamesNotLoaded.isEmpty()) {
-            recursionCreateBean(beanRegistry.getBeanDefinitionMap()); //将所有加载过的beanName都删掉
+            recursionCreateBean(beanRegistry.getBeanDefinitionMap());
         }
 
         KrystaLogger.INSTANCE.info("KrystaContainer has been initialized successfully");
@@ -89,6 +88,7 @@ public class BeanFactory implements Container {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getBean(String beanName, Class<T> clazz) {
         if (isMatched(beanName, clazz)) {
             return (T) singletonObjects.get(beanName);

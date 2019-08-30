@@ -11,16 +11,16 @@ import java.io.InputStream;
  */
 public class MemberInfo extends BasicInfo{
     /*
-    * MemberInfo 实际上包含了以下三种类型的数据
+    * MemberInfo contains these three
     * CONSTANT_Fieldref,CONSTANT_Methodref,CONSTANT_InterfaceMethodref
-    * 它们的数据类型基本一致，所以放到一起
+    *
     * */
 
-    public int accessFlags; //访问标志
-    public int nameIndex; //方法名索引
-    public int descriptorIndex; //方法描述符
+    public int accessFlags;
+    public int nameIndex;
+    public int descriptorIndex;
     public int attributesCount;
-    public AttributeInfo[] attributes; //属性数组，里面的Code属性存储JVm指令
+    public AttributeInfo[] attributes; //Code attribute store the Jvm instruct
 
     public MemberInfo(ConstantPool cp){
         super(cp);

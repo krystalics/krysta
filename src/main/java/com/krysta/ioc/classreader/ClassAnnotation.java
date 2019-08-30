@@ -1,6 +1,11 @@
 package com.krysta.ioc.classreader;
 
 import java.util.List;
+/**
+ * Created by Krysta on 2019/8/25.
+ *
+ * @since ioc1.0
+ */
 
 public class ClassAnnotation {
     private String className;

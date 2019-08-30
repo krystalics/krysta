@@ -6,7 +6,6 @@ import com.krysta.ioc.BeanDefinition;
  * This class created on 2019/8/12
  *
  * @author Krysta
- * @description
  * */
 public class WrapperDefinition {
     BeanDefinition definition;

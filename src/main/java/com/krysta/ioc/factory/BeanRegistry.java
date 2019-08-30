@@ -24,8 +24,7 @@ import java.util.Set;
 
 /**
  * Created by Krysta on 2019/8/21.
- *
- * @description 用于将扫描到的class，注册成BeanDefinition
+ * from class to BeanDefinition
  * @since ioc1.0
  */
 public class BeanRegistry implements Registry {
@@ -72,7 +71,7 @@ public class BeanRegistry implements Registry {
     }
 
     /**
-     * 将该BeanName也注册到父类和接口中，方便后续使用容器时，面向接口编程。
+     * BeanName should be registered in its superclass or  superInterface
      */
     private void setSuperBeanName(Class<?> clazz, String beanName) {
         Set<Class<?>> interfaces = ClassUtil.getAllInterfacesAndSelf(clazz);

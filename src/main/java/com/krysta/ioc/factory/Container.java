@@ -2,14 +2,15 @@ package com.krysta.ioc.factory;
 
 /**
  * Created by Krysta on 2019/8/27.
- *
- * @description 定义容器堆外开放的接口
+ * define the interface to outside of the container
  * @since ioc1.0
  */
 public interface Container {
     /**
-     * 仅通过class信息来获得容器中对应的bean
-     * 需要该类没有多个BeanName，即没有子类也在容器中
+     * only by class to get bean
+     * the class needs to be non-superclass or non-interface
+     * @param clazz: the bean's class
+     * @return T
      */
     <T> T getBean(Class<T> clazz);
 
@@ -17,12 +18,17 @@ public interface Container {
      * getBean only by its beanName
      * condition is the class does'n have superClass or interface
      * because they will have the same beanName
+     *
+     * @param beanName: like the bean's id
+     * @return Object
      */
     Object getBean(String beanName);
 
     /**
      * getBean by its beanName and type
      * exactly
+     * @param beanName,clazz: used these two params to exactly confirm a inheritance chain's class
+     * @return T
      */
     <T> T getBean(String beanName, Class<T> clazz);
 

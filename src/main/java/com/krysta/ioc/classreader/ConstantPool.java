@@ -8,8 +8,8 @@ import java.io.InputStream;
  * Created by wanginbeijing on 2017/1/24.
  */
 public class ConstantPool {
-    public int constant_pool_count; //常量池容量
-    public ConstantInfo[] cpInfo; //cpInfo[]下标从1开始，0无效，且真正的常量池大小为constant_pool_count-1。
+    public int constant_pool_count; //the size of constant pool
+    public ConstantInfo[] cpInfo; //cpInfo[] start from 1,0 is invalid
 
     public ConstantPool(int count) {
         this.constant_pool_count = count;

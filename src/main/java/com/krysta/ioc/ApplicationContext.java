@@ -6,8 +6,7 @@ import com.krysta.ioc.factory.BeanFactory;
 /**
  * This class created on 2019/8/27
  *
- * @author Krysta
- * @description
+ * @author Kryst
  */
 public class ApplicationContext extends BeanFactory {
     private volatile static ApplicationContext INSTANCE;

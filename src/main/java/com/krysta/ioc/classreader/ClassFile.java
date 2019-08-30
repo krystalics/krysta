@@ -7,7 +7,7 @@ import com.krysta.ioc.classreader.basicinfo.MemberInfo;
  */
 public class ClassFile {
     /*
-     * 这里存储Class文件的二进制结构
+     * Class file
      * */
     public long magic;
     public int minorVersion;

@@ -35,7 +35,7 @@ public class AttributeInfo extends BasicInfo {
     public static AttributeInfo getAttribute(ConstantPool cp, InputStream in) {
         int nameIndex = U2.read(in);
         String name = ((ConstantUtf8) cp.cpInfo[nameIndex]).value;
-        if (CODE.equals(name)) { //如果是CODE属性，里面存储的指令集，由另一个类管理
+        if (CODE.equals(name)) {
             return new CodeAttribute(cp, nameIndex);
         }
         return new AttributeInfo(cp, nameIndex);

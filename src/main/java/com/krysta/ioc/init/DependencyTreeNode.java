@@ -7,7 +7,6 @@ import java.util.List;
  * This class created on 2019/8/12
  *
  * @author Krysta
- * @description
  * */
 public class DependencyTreeNode {
     private WrapperDefinition wrapperDefinition;
@@ -22,9 +21,6 @@ public class DependencyTreeNode {
         return wrapperDefinition;
     }
 
-    /*
-     * 应用场景决定只需要替换该node下的next即可，因为树是一层一层加的
-     * */
     public void replaceNode(DependencyTreeNode node) {
         next = node.next;
     }

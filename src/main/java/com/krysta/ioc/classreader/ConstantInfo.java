@@ -20,13 +20,12 @@ import java.io.InputStream;
  */
 public abstract class ConstantInfo {
     /*
-    * 常量池中每一项的数据通用格式如下
     * cp_info{
     *    u1 tag;
     *    u1 info[];
     * }
-    * 下面一系列都是不同数据类型 tag的大小
-    * 在ConstantPool中 根据tag值的大小，返回一个ConstantInfo的子类
+    *
+    * in ConstantPool, according to the value of tag，return a ConstantInfo's subclass
     * */
     public static final short CONSTANT_Class = 7;
     public static final short CONSTANT_Fieldref = 9;
@@ -75,7 +74,7 @@ public abstract class ConstantInfo {
                 return new ConstantMethodType();
             case CONSTANT_InvokeDynamic:
                 return new ConstantInvokeDynamic();
-            //这里是不是有个缺陷？？
+            //a fault error here?
         }
         return null;
     }
