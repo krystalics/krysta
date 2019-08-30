@@ -61,7 +61,7 @@ public class BeanCreator {
         TreeCreator treeCreator=new TreeCreator();
         treeCreator.buildTree(tree, root);
         if (treeCreator.judgeDependency(tree)) {
-            return; //如果有循环依赖就直接return
+            return; //if has a dead circle then jump out
         }
 
         for (int i = 0; i < root.next.size(); i++) {
@@ -152,7 +152,7 @@ public class BeanCreator {
     }
 
 
-    public <T> T createBean(BeanDefinition beanDefinition) throws Exception {
+    private  <T> T createBean(BeanDefinition beanDefinition) throws Exception {
 
         Class<T> clazz = (Class<T>) beanDefinition.getClazz();
         Map<Field, String> fields = beanDefinition.getAutowiredFieldsMap();

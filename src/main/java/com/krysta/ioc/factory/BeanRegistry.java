@@ -30,6 +30,7 @@ import java.util.Set;
 public class BeanRegistry implements Registry {
     public final static BeanRegistry INSTANCE = new BeanRegistry();
 
+    private BeanRegistry(){}
     private Map<String, BeanDefinition> definitionMap = new HashMap<>();
     private Set<String> beanNamesNotLoaded = new HashSet<>();
 

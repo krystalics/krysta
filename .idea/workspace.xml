@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79a62ae7-20e8-448e-a66a-4eb3e88be577" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/TreeUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/ioc.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/krysta/ioc/factory/BeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/krysta/ioc/factory/BeanFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/krysta/ioc/init/BeanCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/krysta/ioc/init/BeanCreator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/krysta/ioc/init/DependencyTreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/krysta/ioc/init/DependencyTreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/krysta/ioc/init/TreeUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/krysta/ioc/init/TreeUtils.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,11 +35,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/util/AnnotationUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="418">
+              <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,11 +56,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2221">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="234">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2568#2569#0" expanded="true" />
@@ -69,22 +84,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/TreeCreator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="-496">
+              <caret line="154" column="12" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/BeanDefinition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-108">
+              <caret line="21" column="68" lean-forward="true" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/ScopeType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/WrapperDefinition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="13" column="10" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -103,9 +154,6 @@
       </list>
     </option>
   </component>
-  <component name="FindBugs-IDEA-Workspace">
-    <toolWindowEditorPreview>false</toolWindowEditorPreview>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>readUTF</find>
@@ -120,8 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/scan/D.java" />
-        <option value="$PROJECT_DIR$/src/test/java/scan/C.java" />
         <option value="$PROJECT_DIR$/src/test/java/ClassScannerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/basicinfo/attribute/CodeAttribute.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/basicinfo/MemberInfo.java" />
@@ -137,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/basictype/U1.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/basictype/U2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/ConstantPool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/annotation/container/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/annotation/container/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/annotation/Autowired.java" />
@@ -151,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/exception/InitClassException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/exception/NoSuchBeanException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/exception/NoSuchBeanNameException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/Registry.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/WrapperDefinition.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/util/AnnotationUtil.java" />
@@ -164,13 +208,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/ClassAnnotation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/ClassReader.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" />
         <option value="$PROJECT_DIR$/src/test/java/com.krysta.ioc/ClassScannerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/A.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/TreeUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/TreeCreator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/D.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/C.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java" />
       </list>
     </option>
   </component>
@@ -254,54 +302,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ioc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="classreader" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="classreader" type="462c0819:PsiDirectoryNode" />
-              <item name="basicinfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="classreader" type="462c0819:PsiDirectoryNode" />
-              <item name="basictype" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="classreader" type="462c0819:PsiDirectoryNode" />
-              <item name="constantinfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ioc" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ioc" type="b2602c69:ProjectViewProjectNode" />
@@ -509,7 +509,7 @@
       <workItem from="1566961735159" duration="12600000" />
       <workItem from="1566990259717" duration="7336000" />
       <workItem from="1567051409150" duration="5621000" />
-      <workItem from="1567090998376" duration="10461000" />
+      <workItem from="1567090998376" duration="11081000" />
     </task>
     <task id="LOCAL-00001" summary="写完基本的classreading和扫描操作，">
       <created>1566288592420</created>
@@ -595,13 +595,17 @@
       <option name="project" value="LOCAL" />
       <updated>1567161397902</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="解决循环依赖">
+      <created>1567176089103</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1567176089103</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ClassScannerTest_scan - 2019.08.28 at 21h 23m 45s.xml">
-      <configuration name="ClassScannerTest.scan" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ClassScannerTest_scan - 2019.08.28 at 21h 27m 52s.xml">
       <configuration name="ClassScannerTest.scan" configurationId="JUnit" />
     </history-entry>
@@ -629,9 +633,12 @@
     <history-entry file="ClassScannerTest_scan_(1) - 2019.08.30 at 22h 31m 44s.xml">
       <configuration name="ClassScannerTest.scan (1)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ClassScannerTest_scan_(1) - 2019.08.30 at 22h 40m 07s.xml">
+      <configuration name="ClassScannerTest.scan (1)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129274000" />
+    <option name="totallyTimeSpent" value="129894000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -733,14 +740,15 @@
     <MESSAGE value="基本删除 多例部分，除了基础的scope，" />
     <MESSAGE value="将测试移出项目，除了jdk，无对外依赖。" />
     <MESSAGE value="为了符合javadoc规范，做出修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="为了符合javadoc规范，做出修改" />
+    <MESSAGE value="解决循环依赖" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决循环依赖" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java</url>
-          <line>52</line>
+          <line>54</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -751,13 +759,6 @@
     <SUITE FILE_PATH="coverage/ioc$ClassScannerTest_scan.ic" NAME="ClassScannerTest.scan Coverage Results" MODIFIED="1566802000430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/constantinfo/ConstantUtf8.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="101" column="3" selection-start-line="101" selection-start-column="3" selection-end-line="101" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/constantinfo/ConstantString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -928,13 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/WrapperDefinition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/util/ClassUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -959,13 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/ScopeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/Container.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
@@ -987,13 +974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/annotation/container/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1008,13 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/util/AnnotationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-616">
-          <caret line="9" selection-start-line="9" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/classreader/ClassReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -1022,27 +995,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/BeanDefinition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-738">
-          <caret line="21" column="68" lean-forward="true" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/C.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -1064,16 +1016,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1106,25 +1048,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/TreeCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        <state relative-caret-position="506">
+          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/C.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="176">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2221">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        <state relative-caret-position="234">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2568#2569#0" expanded="true" />
@@ -1134,6 +1073,75 @@
             <element signature="e#3182#3183#0" expanded="true" />
             <element signature="e#3235#3236#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/factory/BeanRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/DependencyTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/BeanCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-496">
+          <caret line="154" column="12" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/init/WrapperDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/ScopeType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com.krysta.ioc/scan/D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/ClassScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="36" column="11" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/BeanDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="21" column="68" lean-forward="true" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/krysta/ioc/util/AnnotationUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
         </state>
       </provider>
     </entry>

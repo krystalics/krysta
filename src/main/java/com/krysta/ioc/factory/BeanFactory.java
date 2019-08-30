@@ -22,6 +22,8 @@ import java.util.Set;
  */
 public class BeanFactory implements Container {
 
+    private BeanFactory(){}
+
     private List<String> packages = new ArrayList<>();
 
     private List<String> beanNamesLoaded = new ArrayList<>();
@@ -55,7 +57,7 @@ public class BeanFactory implements Container {
     }
 
     /**
-     * firstly init the beans
+     * firstly init the beans with null field
      */
     private void initBeans() {
         beanRegistry.getBeanDefinitionMap().forEach((k, v) -> {

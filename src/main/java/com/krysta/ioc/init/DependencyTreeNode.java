@@ -8,30 +8,30 @@ import java.util.List;
  *
  * @author Krysta
  * */
-public class DependencyTreeNode {
+class DependencyTreeNode {
     private WrapperDefinition wrapperDefinition;
 
-    public boolean circle;
+    boolean circle;
 
-    public List<DependencyTreeNode> next = new ArrayList<>();
+    List<DependencyTreeNode> next = new ArrayList<>();
 
-    public DependencyTreeNode(WrapperDefinition wrapperDefinition) {
+    DependencyTreeNode(WrapperDefinition wrapperDefinition) {
         this.wrapperDefinition = wrapperDefinition;
     }
 
-    public WrapperDefinition getWrapperDefinition() {
+    WrapperDefinition getWrapperDefinition() {
         return wrapperDefinition;
     }
 
-    public void replaceNode(DependencyTreeNode node) {
+    void replaceNode(DependencyTreeNode node) {
         next = node.next;
     }
 
-    public void clear() {
+    void clear() {
         clearTree(this);
     }
 
-    public void clearTree(DependencyTreeNode tree) {
+    private void clearTree(DependencyTreeNode tree) {
         if (tree == null) return;
 
         for (DependencyTreeNode node : tree.next) {

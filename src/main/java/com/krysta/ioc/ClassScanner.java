@@ -34,7 +34,7 @@ public class ClassScanner {
     /**
      * use url to scan file and jar
      */
-    public static Set<Class<?>> getClazzFromPkg(String pkg) {
+    private static Set<Class<?>> getClazzFromPkg(String pkg) {
         Set<Class<?>> classes = new LinkedHashSet<>();
 
         String pkgDirName = pkg.replace('.', '/');
