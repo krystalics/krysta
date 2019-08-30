@@ -1,9 +1,9 @@
-这是一个简单的IoC容器，在容器外通过getBean来获得容器中的对象，在容器内部使用`@Autowired`(目前只支持Field)来注入对象。
+This is a very simple IoC framework，support `@Component` and `@Application` these two annotation as mark to put class into the container. 
 
-提供`@Component`，`@Application`注解作为容器的注解，只要标记了这两个注解的就是容器里的类，默认是单例模式，如果要多例就再加一个注解`@Scope(type=ScopeType.PROTOTYPE)` ，实际上目前多例还不支持。
+Just support singleton, not prototype. As below example, I deal with the circle dependency.
 
 ```java
-//容器内部
+//In the Container
 
 @Application
 public class A implements SuperA {
@@ -38,7 +38,7 @@ public interface TopSuperA {
 ```
 
 ```java
-//容器外部 
+//out of the Container 
 public class ClassScannerTest {
     @Before
     public void before() {
@@ -54,14 +54,22 @@ public class ClassScannerTest {
         B b = ApplicationContext.getContext().getBean(B.class);
         D d = ApplicationContext.getContext().getBean("D", D.class);
         E e = ApplicationContext.getContext().getBean(E.class);
-        System.out.println();
     }
 }
 ```
 
+##### About BeanName
+
+default is the simple class name，you can define by yourself . like below
+
+```java
+@Component(value="myBeanName")
+public class A{}
+```
+
+##### About the Limit
+
+The class which want to join the container, must have a empty constructor. 
 
 
-
-
-上面只是简单的例子，API和更多例子后续提供。
 

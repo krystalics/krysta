@@ -1,0 +1,12 @@
+com.krysta.ioc
+com.krysta.ioc.annotation
+com.krysta.ioc.annotation.container
+com.krysta.ioc.classreader
+com.krysta.ioc.classreader.basicinfo
+com.krysta.ioc.classreader.basicinfo.attribute
+com.krysta.ioc.classreader.basictype
+com.krysta.ioc.classreader.constantinfo
+com.krysta.ioc.exception
+com.krysta.ioc.factory
+com.krysta.ioc.init
+com.krysta.ioc.util
