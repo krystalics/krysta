@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public class BeanFactory implements Container {
 
-    private BeanFactory(){}
+    protected BeanFactory(){}
 
     private List<String> packages = new ArrayList<>();
 
@@ -117,7 +117,7 @@ public class BeanFactory implements Container {
     }
 
     private boolean isMatched(String beanName, Class<?> clazz) {
-        checkBeanName(beanName);
+        beanRegistry.checkBeanName(beanName);
         boolean flag = false;
         List<String> beanNames = beanRegistry.getBeanNamesByType(clazz);
         for (String name : beanNames) {
@@ -127,12 +127,6 @@ public class BeanFactory implements Container {
             }
         }
         return flag;
-    }
-
-    private void checkBeanName(String beanName) {
-        if (beanRegistry.getBeanDefinition(beanName) == null) {
-            throw new NoSuchBeanNameException(beanName);
-        }
     }
 
 

@@ -23,4 +23,5 @@ public interface Registry {
 
     List<BeanDefinition> getBeanDefinitions(Class<?> clazz);
 
+    boolean checkBeanName(String beanName);
 }

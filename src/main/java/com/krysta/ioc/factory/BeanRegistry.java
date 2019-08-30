@@ -1,5 +1,6 @@
 package com.krysta.ioc.factory;
 
+import com.krysta.ioc.exception.NoSuchBeanNameException;
 import com.krysta.ioc.util.AnnotationUtil;
 import com.krysta.ioc.BeanDefinition;
 import com.krysta.ioc.ScopeType;
@@ -25,12 +26,15 @@ import java.util.Set;
 /**
  * Created by Krysta on 2019/8/21.
  * from class to BeanDefinition
+ *
  * @since ioc1.0
  */
 public class BeanRegistry implements Registry {
     public final static BeanRegistry INSTANCE = new BeanRegistry();
 
-    private BeanRegistry(){}
+    private BeanRegistry() {
+    }
+
     private Map<String, BeanDefinition> definitionMap = new HashMap<>();
     private Set<String> beanNamesNotLoaded = new HashSet<>();
 
@@ -193,7 +197,11 @@ public class BeanRegistry implements Registry {
 
     @Override
     public BeanDefinition getBeanDefinition(String beanName) {
-        return definitionMap.get(beanName);
+        BeanDefinition beanDefinition = definitionMap.get(beanName);
+        if (beanDefinition == null) {
+            throw new NoSuchBeanNameException(beanName);
+        }
+        return beanDefinition;
     }
 
     @Override
@@ -206,4 +214,12 @@ public class BeanRegistry implements Registry {
         return classBeanDefinitionListMap.get(clazz);
     }
 
+    @Override
+    public boolean checkBeanName(String beanName) {
+        if (getBeanDefinition(beanName) == null) {
+            throw new NoSuchBeanNameException(beanName);
+        }
+
+        return true;
+    }
 }
