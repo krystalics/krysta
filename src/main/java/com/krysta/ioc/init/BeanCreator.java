@@ -58,8 +58,11 @@ public class BeanCreator {
         DependencyTreeNode root = new DependencyTreeNode(wrapperDefinition);
         getAllSubNode(root);
 
-        TreeUtils.buildTree(tree, root);
-        TreeUtils.isCircle(tree);
+        TreeCreator treeCreator=new TreeCreator();
+        treeCreator.buildTree(tree, root);
+        if (treeCreator.judgeDependency(tree)) {
+            return; //如果有循环依赖就直接return
+        }
 
         for (int i = 0; i < root.next.size(); i++) {
             recursion(root.next.get(i).getWrapperDefinition());
@@ -123,7 +126,7 @@ public class BeanCreator {
     }
 
     private void createBeansByTree(DependencyTreeNode root) {
-        if (root == null) {
+        if (root == null || root.circle) {
             return;
         }
 
@@ -141,8 +144,7 @@ public class BeanCreator {
             if (beanNamesLoaded.contains(definition.getBeanName())) {
                 return;
             }
-            Object singletonObject = createBean(definition.getClazz(), definition.getAutowiredFieldsMap());
-            singletonObjects.put(definition.getBeanName(), singletonObject);
+            createBean(definition);
             beanNamesLoaded.add(definition.getBeanName());
         } catch (Exception ignore) {
             ignore.printStackTrace();
@@ -150,14 +152,17 @@ public class BeanCreator {
     }
 
 
-    public <T> T createBean(Class<T> tClass, Map<Field, String> fields) throws Exception {
+    public <T> T createBean(BeanDefinition beanDefinition) throws Exception {
 
-        checkModifier(tClass);
-        checkConstructor(tClass);
+        Class<T> clazz = (Class<T>) beanDefinition.getClazz();
+        Map<Field, String> fields = beanDefinition.getAutowiredFieldsMap();
 
-        final Constructor<T> declaredConstructor = tClass.getDeclaredConstructor();
+        checkModifier(clazz);
+        checkConstructor(clazz);
+
+        final Constructor<T> declaredConstructor = clazz.getDeclaredConstructor();
         declaredConstructor.setAccessible(true);
-        T bean = declaredConstructor.newInstance();
+        T bean = (T) singletonObjects.get(beanDefinition.getBeanName());
 
 
         for (Field field : fields.keySet()) {

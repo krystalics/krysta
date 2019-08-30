@@ -11,6 +11,8 @@ import java.util.List;
 public class DependencyTreeNode {
     private WrapperDefinition wrapperDefinition;
 
+    public boolean circle;
+
     public List<DependencyTreeNode> next = new ArrayList<>();
 
     public DependencyTreeNode(WrapperDefinition wrapperDefinition) {

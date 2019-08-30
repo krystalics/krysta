@@ -44,12 +44,29 @@ public class BeanFactory implements Container {
             }
         });
 
+        initBeans();
+
         while (!beanNamesNotLoaded.isEmpty()) {
             recursionCreateBean(beanRegistry.getBeanDefinitionMap());
         }
 
         KrystaLogger.INSTANCE.info("KrystaContainer has been initialized successfully");
 
+    }
+
+    /**
+     * firstly init the beans
+     */
+    private void initBeans() {
+        beanRegistry.getBeanDefinitionMap().forEach((k, v) -> {
+            try {
+                singletonObjects.put(k, v.getClazz().newInstance());
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void recursionCreateBean(Map<String, BeanDefinition> beanDefinitionMap) {
@@ -99,11 +116,11 @@ public class BeanFactory implements Container {
 
     private boolean isMatched(String beanName, Class<?> clazz) {
         checkBeanName(beanName);
-        boolean flag=false;
+        boolean flag = false;
         List<String> beanNames = beanRegistry.getBeanNamesByType(clazz);
         for (String name : beanNames) {
-            if(name.equals(beanName)){
-                flag=true;
+            if (name.equals(beanName)) {
+                flag = true;
                 break;
             }
         }
