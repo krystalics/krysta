@@ -9,7 +9,7 @@ public class NoSuchBeanNameException extends RuntimeException {
     private static final long serialVersionUID = -347294204342340234L;
 
     public NoSuchBeanNameException(String beanName) {
-        super("BeanName : "+beanName + " isn't in the container,please check it!");
+        super("BeanName "+beanName + " isn't in the container,please check it!");
     }
 }
 

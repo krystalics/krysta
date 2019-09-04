@@ -1,5 +1,6 @@
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\constantinfo\ConstantInteger.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\annotation\Autowired.java
+E:\JavaProject\ioc\src\main\java\com\krysta\ioc\factory\KrystaApplication.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\basictype\U4.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\Type.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\constantinfo\ConstantLong.java
@@ -8,6 +9,7 @@ E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\ClassReader.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\ConstantPool.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\factory\BeanRegistry.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\classreader\ClassAnnotation.java
+E:\JavaProject\ioc\src\main\java\com\krysta\ioc\init\TreeCreator.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\ClassScanner.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\annotation\Qualifier.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\annotation\container\Component.java
@@ -51,4 +53,3 @@ E:\JavaProject\ioc\src\main\java\com\krysta\ioc\annotation\DestroyMethod.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\ApplicationContext.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\annotation\Scope.java
 E:\JavaProject\ioc\src\main\java\com\krysta\ioc\factory\BeanFactory.java
-E:\JavaProject\ioc\src\main\java\com\krysta\ioc\init\TreeUtils.java

@@ -33,6 +33,7 @@ com\krysta\ioc\classreader\constantinfo\ConstantLong.class
 com\krysta\ioc\classreader\ConstantPool.class
 com\krysta\ioc\annotation\Qualifier.class
 com\krysta\ioc\annotation\InitMethod.class
+com\krysta\ioc\factory\KrystaApplication.class
 com\krysta\ioc\classreader\constantinfo\ConstantString.class
 com\krysta\ioc\init\DependencyTreeNode.class
 com\krysta\ioc\classreader\basicinfo\BasicInfo.class
@@ -44,9 +45,9 @@ com\krysta\ioc\classreader\ConstantInfo.class
 com\krysta\ioc\classreader\basicinfo\attribute\ExceptionTable.class
 com\krysta\ioc\classreader\constantinfo\ConstantNameAndType.class
 com\krysta\ioc\classreader\constantinfo\ConstantMethodHandle.class
+com\krysta\ioc\init\TreeCreator.class
 com\krysta\ioc\util\KrystaLogger.class
 com\krysta\ioc\classreader\basictype\U1.class
-com\krysta\ioc\init\TreeUtils.class
 com\krysta\ioc\exception\GetBeanException.class
 com\krysta\ioc\classreader\basicinfo\MemberInfo.class
 com\krysta\ioc\exception\InitClassException.class

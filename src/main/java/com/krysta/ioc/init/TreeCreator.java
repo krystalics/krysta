@@ -89,7 +89,7 @@ public class TreeCreator {
             errorMsg.append("\n").append(path.get(i).getClazz().getName());
         }
 
-        KrystaLogger.INSTANCE.error(errorMsg.toString() + " has a dead circle dependency");
+        KrystaLogger.INSTANCE.debug(errorMsg.toString() + " has a dead circle dependency");
 
     }
 }

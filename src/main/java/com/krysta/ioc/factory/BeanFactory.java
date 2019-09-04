@@ -22,7 +22,8 @@ import java.util.Set;
  */
 public class BeanFactory implements Container {
 
-    protected BeanFactory(){}
+    protected BeanFactory() {
+    }
 
     private List<String> packages = new ArrayList<>();
 
@@ -103,7 +104,11 @@ public class BeanFactory implements Container {
 
     @Override
     public Object getBean(String beanName) {
-        return singletonObjects.get(beanName);
+        Object o = singletonObjects.get(beanName);
+        if (o == null) {
+            throw new NoSuchBeanNameException(beanName);
+        }
+        return o;
     }
 
     @Override
